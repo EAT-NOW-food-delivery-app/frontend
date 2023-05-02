@@ -1,6 +1,9 @@
 import { useState } from "react";
 import Image from 'next/image';
-import SignUpImage from "../public/images/SignUpImage.png"
+import SignUpImage from "../public/images/SignUpImage.jpg"
+import google from "../public/images/google.jpg"
+
+
 
 export default function SignUpComponent() {
 
@@ -18,8 +21,8 @@ export default function SignUpComponent() {
                         <button
                             className={`${activeTab === "login"
                                 ? "bg-[#FF7538] text-white"
-                                : "text-gray-500 bg-white"
-                                } py-2 px-4 text-lg font-semibold rounded-md focus:outline-none`}
+                                : "text-gray-400 "
+                                } py-2 px-4 text-lg tracking-wide font-semibold rounded-md focus:outline-none`}
                             onClick={() => openTab("login")}
                         >
                             Login
@@ -27,8 +30,8 @@ export default function SignUpComponent() {
                         <button
                             className={`${activeTab === "signup"
                                 ? "bg-[#FF7538] text-white"
-                                : "text-gray-500 bg-white"
-                                } py-2 px-4 text-lg font-semibold rounded-md focus:outline-none`}
+                                : "text-gray-400 "
+                                } py-2 px-4 text-lg tracking-wide font-semibold rounded-md focus:outline-none`}
                             onClick={() => openTab("signup")}
                         >
                             SignUp
@@ -36,28 +39,46 @@ export default function SignUpComponent() {
                     </div>
 
                 </div>
-                <div className="w-3/4 rounded border hover:shadow-xl border-black-800 border-6 flex h-[85%] flex items-center p-4 justify-center ">
-                    <form className="flex-1 h-2/3 m-2 rounded-lg flex flex-col border-10 border-black-800  items-center justify-center ">
-                        <div className="md:flex md:items-center w-2/3 mt-2 mb-6">
-                            <input className="bg-[#ECECEC] appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-[#FF7538]" id="inline-full-name" type="text" placeholder="Enter Full Name" />
-                        </div>
-                        <div className="md:flex md:items-center w-2/3 mb-6">
-                            <input className="bg-[#ECECEC] appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-[#FF7538]" id="inline-password" type="password" placeholder="Enter Email" />
-                        </div>
-                        <div className="md:flex md:items-center w-2/3 mb-6">
-                            <input className="bg-[#ECECEC] appearance-none border-2 border-gray-200 rounded w-[100%] py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-[#FF7538]" id="inline-password" type="password" placeholder="Enter Password" />
-                        </div>
-                        <div className="md:flex md:items-center w-2/3 mb-6">
-                            <input className="bg-[#ECECEC] appearance-none border-2 border-gray-200 rounded w-[100%] py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-[#FF7538]" id="inline-password" type="number" placeholder="Enter Phone No." />
-                        </div>
-                        <div className="md:flex md:items-center flex items-center justify-center w-2/3">
-                            <button className="shadow bg-[#FF7538] hover:bg-[#dd7f56] focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
-                                Sign Up
-                            </button>
-                        </div>
-                    </form>
-                    <div className="flex-1 hidden md:block bg-white">
-                        <Image src={SignUpImage} width={400} alt="Sign Up Image" />
+
+                <div className="w-3/4 rounded border-4 border-gray-300 hover:shadow-xl flex h-[85%] flex items-center p-4 justify-center ">
+                    <div className={`flex-1 h-2/3 rounded-lg flex flex-col ${activeTab === "signup" ? "translate-x-full " : "translate-x-0"
+                        } ease-in-out duration-500  items-center justify-center `}>
+                        <form >
+                            {/* Form Fields */}
+                            {activeTab === "signup" && <div className="md:flex md:items-center mt-2 mb-6">
+                                <input className="bg-[#ECECEC] appearance-none border-2 border-gray-200 rounded w-full  py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-[#FF7538]" id="inline-full-name" type="text" placeholder="Enter Full Name" />
+                            </div>
+                            }
+                            <div className="md:flex md:items-center  mb-6">
+                                <input className="bg-[#ECECEC] appearance-none border-2 border-gray-200 rounded w-full  py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-[#FF7538]" id="inline-password" type="password" placeholder="Enter Email" />
+                            </div>
+                            <div className="md:flex md:items-center  mb-3">
+                                <input className="bg-[#ECECEC] appearance-none border-2 border-gray-200 rounded w-full w-[100%] py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-[#FF7538]" id="inline-password" type="password" placeholder="Enter Password" />
+                            </div>
+                            {activeTab === "login" && <div className="md:flex md:items-center  mb-6">
+                                <p className="ml-auto text-sm font-semibold text-[#FF7538] cursor-pointer">Forgot Password?</p>
+                            </div>
+                            }
+                            <div className="md:flex md:items-center flex items-center justify-center mt-2 ">
+                                <button className="shadow bg-[#FF7538] hover:bg-[#dd7f56] focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded w-full" type="button">
+                                    {activeTab === "login" ? "Log In" : "Sign Up"}
+                                </button>
+                            </div>
+                            <div className="h-1 bg-gray-200 w-full mt-6">
+                            </div>
+                            <p className="text-center font-light text-gray-500">Or</p>
+                            <div className="md:flex md:items-center flex items-center justify-center mt-2 ">
+                                <button className="shadow focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded w-full hover:bg-gray-200" type="button">
+                                    <p className="text-gray-600 ">SIGN IN WITH GOOGLE</p>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div className={`flex-1 hidden md:block bg-gray-200 rounded border-2 ${activeTab === "signup" ? "-translate-x-full " : "-translate-x-0 "
+                        } ease-in-out duration-500 h-[90%] `}>
+                        <Image src={SignUpImage} fill alt="Sign Up Image" className={`transform hover:scale-95 rounded-l-2xl  duration-200  
+                            `}
+                        />
                     </div>
                 </div>
             </div>
