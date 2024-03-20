@@ -13,6 +13,7 @@ export default function SignUpComponent() {
         setActiveTab(tabName);
     };
 
+
     return (
         <>
             <div className="w-full h-screen flex flex-col items-center justify-center bg-[#F8F8F8]">
